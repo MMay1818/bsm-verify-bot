@@ -167,22 +167,22 @@ class DiscordMember {
     if (this.user.bot) {
       return status({
         status: false,
-        error: ':robot: BSMAdministration cannot verify bots.'
+        error: ':robot: May Vertification cannot verify bots.'
       })
     }
 
     // Ignore users with this specific role (to give server owners more power)
-    if (this.member.roles.find('name', 'BSMAdministration Bypass')) {
+    if (this.member.roles.find('name', 'May Bypass')) {
       return status({
         status: false,
-        error: ':octagonal_sign: BSMAdministration cannot act on users with the "BSMAdministration Bypass" role.',
+        error: ':octagonal_sign: May Vertification cannot act on users with the "May Bypass" role.',
         nonFatal: true
       })
     }
 
     // Create a warning to append to any errors. In some permission setups, BSMAdministration is reliant on role positioning (specifically if it has administrator or not)
     if ((await this.server.members.fetch(this.bot.user.id)).highestRole.comparePositionTo(this.member.highestRole) < 1) {
-      errorAppend = "\n\nBSMAdministration's position in the role list is below that of this user. With certain setups, this will prevent BSMAdministration from working correctly. Please have a server admin drag BSMAdministration's role above all other roles in order to fix this problem."
+      errorAppend = "\n\nBSMAdministration's position in the role list is below that of this user. With certain setups, this will prevent May Vertification from working correctly. Please have a server admin drag May Vertification's role above all other roles in order to fix this problem."
     }
 
     status(':scroll: Checking the verification registry...')
@@ -245,7 +245,7 @@ class DiscordMember {
             return status({
               status: false,
               nonFatal: true,
-              error: "BSMAdministration doesn't have permissions to add roles to that user." + errorAppend
+              error: "May Vertification doesn't have permissions to add roles to that user." + errorAppend
             })
           }
         }
@@ -261,7 +261,7 @@ class DiscordMember {
             return status({
               status: false,
               nonFatal: true,
-              error: "BSMAdministration doesn't have permission to remove roles from that user." + errorAppend
+              error: "May Vertification doesn't have permission to remove roles from that user." + errorAppend
             })
           }
         }
@@ -277,7 +277,7 @@ class DiscordMember {
             return status({
               status: false,
               nonFatal: true,
-              error: this.member.guild.ownerID === this.member.id ? "Sorry, BSMAdministration can't change the server owner's nickname due to Discord permission restrictions. Please manually update your nickname. Or don't, I'm just an error message." : "BSMAdministration doesn't have permission to change that user's nickname." + errorAppend
+              error: this.member.guild.ownerID === this.member.id ? "Sorry, May Vertification can't change the server owner's nickname due to Discord permission restrictions. Please manually update your nickname. Or don't, I'm just an error message." : "May Vertification doesn't have permission to change that user's nickname." + errorAppend
             })
           }
         }
